@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { ImLocation2 } from "react-icons/im";
 
-const FormAndLocation = ({ handleSubmit, city, country }) => {
+const FormAndLocation = ({ handleSubmit, city, country, getLocation }) => {
   const [enteredCity, setEnteredCity] = useState("");
 
   const submitForm = (e) => {
     e.preventDefault();
+    handleSubmit(enteredCity);
   };
 
   return (
@@ -32,6 +33,12 @@ const FormAndLocation = ({ handleSubmit, city, country }) => {
         <div className="font-bold text-xl bg-gray-400  px-4 py-2 rounded-lg">
           {city}, <span>{country}</span>
         </div>
+        <button
+          className="bg-black/70  px-3 py-2 mt-2 text-white"
+          onClick={getLocation}
+        >
+          Get your own Location
+        </button>
       </div>
     </div>
   );

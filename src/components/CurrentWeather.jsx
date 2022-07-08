@@ -12,14 +12,14 @@ const dateFormatter = (date, mode) => {
 const CurrentWeather = ({ weatherData, mode }) => {
   const { temp, weatherId: id, windSpeed, currentDate, humidity } = weatherData;
 
-  console.log(mode);
-
   return (
     <>
-      <div className="flex-col lg:flex-row flex items-center gap-y-2 mt-4 lg:gap-x-6">
+      <div className="flex-col lg:flex-row justify-center flex-1  flex h-full lg:p-4 py-8 items-center gap-y-2 lg:gap-x-6">
         <div className="w-full flex justify-around items-center px-4 lg:flex-col lg:w-auto lg:gap-y-4">
-          <div className="lg:text-5xl text-4xl  text-white">{temp}°</div>
-          <div className="px-2 py-1 bg-black/40 rounded-lg text-center text-white text-xl">
+          <div className=" text-4xl lg:text-5xl xl:text-[4em]  text-white">
+            {temp}°
+          </div>
+          <div className="px-2 py-1 bg-black/70 rounded-lg text-center text-gray-200 text-xl">
             {dateFormatter(currentDate, mode)}
           </div>
         </div>
@@ -29,7 +29,10 @@ const CurrentWeather = ({ weatherData, mode }) => {
             <span>|</span>
             <span> Humidity: {humidity}%</span>
           </p>
-          <LogoToRender id={id} iconStyles={`h-20 w-20 text-white `} />
+          <LogoToRender
+            id={id}
+            iconStyles={`h-20 xl:w-26 xl:h-26 w-20 text-white `}
+          />
         </div>
       </div>
     </>

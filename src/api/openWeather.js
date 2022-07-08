@@ -5,13 +5,18 @@ const BASE_URL = "https://api.openweathermap.org/data/2.5";
 
 export const fetchWeather = async (type, params) => {
   const url = new URL(BASE_URL + "/" + type);
-  url.search = new URLSearchParams({ ...params, appid: API_KEY });
+  url.search = new URLSearchParams({
+    ...params,
+    appid: API_KEY,
+    units: "metric",
+  });
 
   try {
     const response = await axios.get(url);
+
     return response.data;
   } catch (err) {
-    return err.response;
+    return err;
   }
 };
 
@@ -26,10 +31,12 @@ export const calculateDayDifference = (date1, date2) => {
 };
 
 export const formatData = (data, type) => {
+  if (!data?.list) return;
   const list = data.list;
 
   let returnedList = [list[0]];
   if (type === "7d") {
+    // eslint-disable-next-line
     const fmt_list = list.forEach((item, index) => {
       const comp = Number(calculateDayDifference(list[0].dt, item.dt));
 
@@ -61,33 +68,3 @@ export const formatData = (data, type) => {
     sunset: data.city.sunset,
   };
 };
-
-// const formatWeather = (data) => {
-//   const {
-//     coords: { lat, lon },
-//     main: { temp, feels_like, temp_min, temp_max, humidity },
-//     name,
-//     dt,
-//     weather,
-//     sys: { country, sunrise, sunset },
-//     wind: { speed },
-//   } = data;
-
-//   const {main,details,icon} = weather[0];
-
-//   return {
-//     lat,
-//     lon,
-//     temp,
-//     feels_like,
-//     temp_min,
-//     temp_max,
-//     humidity,
-//     name,
-//     dt,
-//     country,
-//     sunrise,
-//     sunset,
-//     speed,
-//   };
-// };

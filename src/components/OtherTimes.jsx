@@ -4,21 +4,21 @@ import LogoToRender from "./LogoToRender";
 const OtherTimes = ({ weatherData, mode }) => {
   return (
     <div
-      className={`grid grid-cols-3 p-4 lg:p-0   ${
+      className={`grid grid-cols-3 gap-x-2  p-4 lg:p-0  xl:flex-[2]  ${
         mode === "7d" ? "lg:grid-cols-5" : "lg:grid-cols-4"
       }`}
     >
       {weatherData.map((item, i) => {
-        const { temp, weatherId: id, windSpeed, currentDate, humidity } = item;
+        const { temp, weatherId: id, currentDate } = item;
         return (
           <div
-            className={`flex flex-col items-center text-white lg:gap-y-4 gap-y-2 lg:border-r-2 lg:px-4 xl:px-8  border-black/40  ${
+            className={`flex flex-col items-center text-white lg:gap-y-4 gap-y-2 lg:border-r-2 lg:px-4 xl:px-8  border-white/40  ${
               i === 0 && "lg:border-l-2"
             }`}
           >
             <span
-              className={`rounded-2xl bg-black/50 px-6 py-2 text-center mt-8 ${
-                mode === "3h" && "lg:w-24 lg:text-xs "
+              className={`rounded-2xl px-6  lg:bg-black/50 lg:font-normal font-bold  py-2 text-white text-center mt-8  ${
+                mode === "3h" && "lg:w-24 lg:text-xs  h-16 lg:h-auto "
               }`}
             >
               {mode === "7d"
@@ -27,9 +27,9 @@ const OtherTimes = ({ weatherData, mode }) => {
             </span>
             <LogoToRender
               id={id}
-              iconStyles="h-8 w-8 text-white lg:h-16 lg:w-16"
+              iconStyles="h-16 w-16 text-white  xl:h-20 xl:w-20"
             />
-            <span className="text-xl xl:text-2xl">{temp}°</span>
+            <span className="text-2xl  ">{temp}°</span>
           </div>
         );
       })}

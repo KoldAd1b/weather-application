@@ -22,4 +22,18 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
   }
+  .scrollbar {
+    scrollbar-width: normal;
+    scrollbar-color: #777 #555;
+  }
+  .linear-gradient {
+    background: #005aa7;
+    background: -webkit-linear-gradient(to right, #fffde4, #005aa7);
+    background: linear-gradient(to right, #fffde4, #005aa7);
+  }
+  .linear-gradient-darker {
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
+  }
 }

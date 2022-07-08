@@ -18,12 +18,14 @@ const ImageToRender = ({ id }) => {
   if (id >= 700 && id < 800) {
     return <img src={snow} alt="img" className={imageStyles} />;
   }
-  if (id >= 800) {
+  if (id === 800) {
     return <img src={clear} alt="img" className={imageStyles} />;
   }
   if (id > 800) {
     return <img src={sunny} alt="img" className={imageStyles} />;
   }
+
+  return <img src={rain} alt="img" className={imageStyles} />;
 };
 
 export default ImageToRender;
